@@ -2,19 +2,26 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setThrow] = useState(0)
-  function throwBall(){
-    return Math.floor(Math.random() * 11)
+  const [roll, setRoll] = useState(0)
+  const [pinsStanding, setPinsStanding] = useState(10)
+  
+  function throwBall(){ 
+    const throwResult = Math.floor(Math.random() * (pinsStanding + 1))
+    setPinsStanding(pinsStanding - throwResult)
+    return throwResult
   }
 
   return (
     <>
       <div className="card">
-        <button onClick={() => setThrow(throwBall())}>
+        <button onClick={() => setRoll(throwBall())}>
           Bowl
         </button>
         <p>
-          You knocked over {count} pins
+          You knocked over {roll} pins.
+        </p>
+        <p>
+          There are {pinsStanding} remaining pins standing.
         </p>
       </div>
     </>
