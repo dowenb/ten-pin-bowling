@@ -7,6 +7,7 @@ function App() {
   
   function throwBall(){ 
     const throwResult = Math.floor(Math.random() * (pinsStanding + 1))
+    setRoll(throwResult)
     setPinsStanding(pinsStanding - throwResult)
     return throwResult
   }
@@ -14,7 +15,7 @@ function App() {
   return (
     <>
       <div className="card">
-        <button onClick={() => setRoll(throwBall())}>
+        <button onClick={() => throwBall()}>
           Bowl
         </button>
         <p>
